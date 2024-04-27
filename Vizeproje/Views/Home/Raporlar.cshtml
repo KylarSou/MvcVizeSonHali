@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "Raporlar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Raporlar</h2>
+
+@using (Html.BeginForm("AddReport", "Home", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.Label("id", "id")
+        @Html.TextBox("id", null, new { @class = "form-control", placeholder = "id" })
+    </div>
+    <div class="form-group">
+        @Html.Label("Mezunlar", "Mezunlar")
+        @Html.TextBox("Mezunlar", null, new { @class = "form-control", placeholder = "Mezunlar" })
+    </div>
+    <div class="form-group">
+        @Html.Label("Aktif", "Aktif")
+        @Html.TextBox("Aktif", null, new { @class = "form-control", placeholder = "Aktif" })
+    </div>
+    <button type="submit" class="btn btn-primary">Ekle</button>
+
+    <!-- Raporları Göster butonu -->
+    @Html.ActionLink("Raporları Göster", "ShowRaporlar", "Home", null, new { @class = "btn btn-info" })
+}

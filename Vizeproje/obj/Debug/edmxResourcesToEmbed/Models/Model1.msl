@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="UniversiteModelStoreContainer" CdmEntityContainer="UniversiteEntities">
+    <EntitySetMapping Name="LoginTb">
+      <EntityTypeMapping TypeName="UniversiteModel.LoginTb">
+        <MappingFragment StoreEntitySet="LoginTb">
+          <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+          <ScalarProperty Name="Ad" ColumnName="Ad" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Akademik">
+      <EntityTypeMapping TypeName="UniversiteModel.Akademik">
+        <MappingFragment StoreEntitySet="Akademik">
+          <ScalarProperty Name="Ayrilis" ColumnName="Ayrilis" />
+          <ScalarProperty Name="Baslangic" ColumnName="Baslangic" />
+          <ScalarProperty Name="Bolumders" ColumnName="Bolumders" />
+          <ScalarProperty Name="Ogretmenad" ColumnName="Ogretmenad" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Idari">
+      <EntityTypeMapping TypeName="UniversiteModel.Idari">
+        <MappingFragment StoreEntitySet="Idari">
+          <ScalarProperty Name="Ad" ColumnName="Ad" />
+          <ScalarProperty Name="Birim" ColumnName="Birim" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Raporlar">
+      <EntityTypeMapping TypeName="UniversiteModel.Raporlar">
+        <MappingFragment StoreEntitySet="Raporlar">
+          <ScalarProperty Name="Aktif" ColumnName="Aktif" />
+          <ScalarProperty Name="Mezunlar" ColumnName="Mezunlar" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Giris_Tb">
+      <EntityTypeMapping TypeName="UniversiteModel.Giris_Tb">
+        <MappingFragment StoreEntitySet="Giris_Tb">
+          <ScalarProperty Name="kullanici" ColumnName="kullanici" />
+          <ScalarProperty Name="sifre" ColumnName="sifre" />
+          <ScalarProperty Name="Ad" ColumnName="Ad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BolumTb">
+      <EntityTypeMapping TypeName="UniversiteModel.BolumTb">
+        <MappingFragment StoreEntitySet="BolumTb">
+          <ScalarProperty Name="Kredi" ColumnName="Kredi" />
+          <ScalarProperty Name="Ders" ColumnName="Ders" />
+          <ScalarProperty Name="Ogrencid" ColumnName="Ogrencid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,19 @@
+﻿@using (Html.BeginForm("AddIdari", "Home", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.Label("id", "id")
+        @Html.TextBox("id", null, new { @class = "form-control", placeholder = "id" })
+    </div>
+    <div class="form-group">
+        @Html.Label("Birim", "Birim")
+        @Html.TextBox("Birim", null, new { @class = "form-control", placeholder = "Birim" })
+    </div>
+    <div class="form-group">
+        @Html.Label("Ad", "Ad")
+        @Html.TextBox("Ad", null, new { @class = "form-control", placeholder = "Ad" })
+    </div>
+    <button type="submit" class="btn btn-primary">Ekle</button>
+
+    <!-- İdari verileri göster butonu -->
+    @Html.ActionLink("İdari Verileri Göster", "ShowIdari", "Home", null, new { @class = "btn btn-info" })
+}

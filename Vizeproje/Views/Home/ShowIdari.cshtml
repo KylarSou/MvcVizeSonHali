@@ -1,0 +1,90 @@
+﻿@model List<Vizeproje.Models.Idari>
+
+@{
+    ViewBag.Title = "ShowIdari";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Show Idari</h2>
+
+<button type="button" class="btn btn-info" onclick="location.href='@Url.Action("ShowIdari", "Home")'">Idari Bilgilerini Göster</button>
+
+<table class="table">
+    <tr>
+        <th>Id</th>
+        <th>Birim</th>
+        <th>Ad</th>
+        <th></th> <!-- Düzenle ve Sil için boş hücre -->
+    </tr>
+    @foreach (var idari in Model)
+    {
+        <tr>
+            <td>@idari.id</td>
+            <td>@idari.Birim</td>
+            <td>@idari.Ad</td>
+            <td>
+                <button type="button" class="btn btn-warning" onclick="editIdari('@idari.id', '@idari.Birim', '@idari.Ad')">Edit</button>
+            </td>
+            <td>
+                <form action="@Url.Action("DeleteIdari", "Home")" method="post">
+                    <input type="hidden" name="id" value="@idari.id" />
+                    <button type="button" class="btn btn-danger" onclick="confirmDelete('@idari.id')">Delete</button>
+                </form>
+            </td>
+        </tr>
+    }
+</table>
+
+<!-- EditIdari Modal -->
+<div id="editIdariModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Idari Bilgiyi Düzenle</h4>
+            </div>
+            <div class="modal-body">
+                <form id="editIdariForm" action="@Url.Action("EditIdari", "Home")" method="post">
+                    <input type="hidden" id="editIdariId" name="id" />
+                    <div class="form-group">
+                        <label for="editBirim">Birim:</label>
+                        <input type="text" class="form-control" id="editBirim" name="Birim" />
+                    </div>
+                    <div class="form-group">
+                        <label for="editAd">Ad:</label>
+                        <input type="text" class="form-control" id="editAd" name="Ad" />
+                    </div>
+                    <button type="submit" class="btn btn-primary">Kaydet</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script>
+        function confirmDelete(id) {
+            if (confirm('Bu idari bilgiyi silmek istediğinizden emin misiniz?')) {
+                // Silme işlemi için formu gönder
+                var form = document.createElement('form');
+                form.action = '@Url.Action("DeleteIdari", "Home")';
+                form.method = 'post';
+                var input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = 'id';
+                input.value = id;
+                form.appendChild(input);
+                document.body.appendChild(form);
+                form.submit();
+            }
+        }
+
+        function editIdari(id, birim, ad) {
+            $("#editIdariId").val(id);
+            $("#editBirim").val(birim);
+            $("#editAd").val(ad);
+            $("#editIdariModal").modal("show");
+        }
+    </script>
+}

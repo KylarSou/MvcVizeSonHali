@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3ab117f3a87340ca91c841e0106ac2ec" Name="Diagram1">
+        <EntityTypeShape EntityType="UniversiteModel.LoginTb" Width="1.5" PointX="0.875" PointY="0.75" />
+        <EntityTypeShape EntityType="UniversiteModel.Akademik" Width="1.5" PointX="3.75" PointY="0.75" />
+        <EntityTypeShape EntityType="UniversiteModel.Idari" Width="1.5" PointX="2.75" PointY="3.75" />
+        <EntityTypeShape EntityType="UniversiteModel.Raporlar" Width="1.5" PointX="4.75" PointY="3.75" />
+        <EntityTypeShape EntityType="UniversiteModel.Giris_Tb" Width="1.5" PointX="5.75" PointY="0.75" />
+        <EntityTypeShape EntityType="UniversiteModel.BolumTb" Width="1.5" PointX="0.875" PointY="3.625" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

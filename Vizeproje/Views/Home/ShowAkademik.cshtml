@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Vizeproje.Models.Akademik>
+
+@{
+    ViewBag.Title = "Akademik Bilgiler";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@if (Model.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>Öğretmen Adı</th>
+                <th>Bölüm/Ders Adı</th>
+                <th>Başlangıç Tarihi</th>
+                <th>Ayrılma Tarihi</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var akademikBilgi in Model)
+            {
+                <tr>
+                    <td>@akademikBilgi.id</td>
+                    <td>@akademikBilgi.Ogretmenad</td>
+                    <td>@akademikBilgi.Bolumders</td>
+                    <td>@akademikBilgi.Baslangic.ToString()</td>
+                    <td>@(akademikBilgi.Ayrilis != null ? akademikBilgi.Ayrilis.Value.ToString() : "-")</td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Akademik bilgiler bulunamadı.</p>
+}

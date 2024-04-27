@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="UniversiteModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="UniversiteEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="LoginTb" EntityType="UniversiteModel.LoginTb" />
+    <EntitySet Name="Akademik" EntityType="UniversiteModel.Akademik" />
+    <EntitySet Name="Idari" EntityType="UniversiteModel.Idari" />
+    <EntitySet Name="Raporlar" EntityType="UniversiteModel.Raporlar" />
+    <EntitySet Name="Giris_Tb" EntityType="UniversiteModel.Giris_Tb" />
+    <EntitySet Name="BolumTb" EntityType="UniversiteModel.BolumTb" />
+  </EntityContainer>
+  <EntityType Name="LoginTb">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Ad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Akademik">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Ogretmenad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Bolumders" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Baslangic" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Ayrilis" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Idari">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Birim" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Ad" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Raporlar">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Mezunlar" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Aktif" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Giris_Tb">
+    <Key>
+      <PropertyRef Name="Ad" />
+      <PropertyRef Name="sifre" />
+      <PropertyRef Name="kullanici" />
+    </Key>
+    <Property Name="Ad" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="sifre" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="kullanici" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="BolumTb">
+    <Key>
+      <PropertyRef Name="Ogrencid" />
+    </Key>
+    <Property Name="Ogrencid" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Ders" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Kredi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+</Schema>

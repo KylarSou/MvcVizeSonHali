@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="UniversiteModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Akademik">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Ogretmenad" Type="varchar" MaxLength="50" />
+    <Property Name="Bolumders" Type="varchar" MaxLength="50" />
+    <Property Name="Baslangic" Type="varchar" MaxLength="50" />
+    <Property Name="Ayrilis" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Universite.dbo.BolumTb' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="BolumTb">
+    <Key>
+      <PropertyRef Name="Ogrencid" />
+    </Key>
+    <Property Name="Ogrencid" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Ders" Type="varchar" MaxLength="50" />
+    <Property Name="Kredi" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Universite.dbo.Giris_Tb' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Giris_Tb">
+    <Key>
+      <PropertyRef Name="Ad" />
+      <PropertyRef Name="sifre" />
+      <PropertyRef Name="kullanici" />
+    </Key>
+    <Property Name="Ad" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="sifre" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="kullanici" Type="nchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Idari">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="Birim" Type="nchar" MaxLength="10" />
+    <Property Name="Ad" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="LoginTb">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Ad" Type="varchar" MaxLength="50" />
+    <Property Name="Sifre" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Raporlar">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="Mezunlar" Type="nchar" MaxLength="10" />
+    <Property Name="Aktif" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityContainer Name="UniversiteModelStoreContainer">
+    <EntitySet Name="Akademik" EntityType="Self.Akademik" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Idari" EntityType="Self.Idari" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LoginTb" EntityType="Self.LoginTb" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Raporlar" EntityType="Self.Raporlar" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BolumTb" EntityType="Self.BolumTb" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [BolumTb].[Ogrencid] AS [Ogrencid], 
+    [BolumTb].[Ders] AS [Ders], 
+    [BolumTb].[Kredi] AS [Kredi]
+    FROM [dbo].[BolumTb] AS [BolumTb]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Giris_Tb" EntityType="Self.Giris_Tb" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Giris_Tb].[Ad] AS [Ad], 
+    [Giris_Tb].[sifre] AS [sifre], 
+    [Giris_Tb].[kullanici] AS [kullanici]
+    FROM [dbo].[Giris_Tb] AS [Giris_Tb]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

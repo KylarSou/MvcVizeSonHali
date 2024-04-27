@@ -1,0 +1,27 @@
+﻿@using (Html.BeginForm("AddAkademik", "Home", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.Label("id", "id")
+        @Html.TextBox("id", null, new { @class = "form-control", placeholder = "id" })
+    </div>
+    <div class="form-group">
+        @Html.Label("Ogretmenad", "Öğretmen Adı")
+        @Html.TextBox("Ogretmenad", null, new { @class = "form-control", placeholder = "Öğretmen Adı" })
+    </div>
+    <div class="form-group">
+        @Html.Label("BolumDers", "Bölüm/Ders Adı")
+        @Html.TextBox("BolumDers", null, new { @class = "form-control", placeholder = "Bölüm/Ders Adı" })
+    </div>
+    <div class="form-group">
+        @Html.Label("Baslangic", "Başlangıç Tarihi")
+        @Html.TextBox("Baslangic", null, new { @class = "form-control datepicker", placeholder = "Başlangıç Tarihi" })
+    </div>
+    <!-- Ayrilis alanını kaldır -->
+    <!-- <div class="form-group">
+        @Html.Label("Ayrilis", "Ayrılma Tarihi (Opsiyonel)")
+        @Html.TextBox("Ayrilis", null, new { @class = "form-control datepicker", placeholder = "Ayrılma Tarihi" })
+    </div> -->
+    <button type="submit" class="btn btn-primary">Bilgi Ekle</button>
+
+    @Html.ActionLink("Akademik Bilgileri Göster", "ShowAkademik", "Home", null, new { @class = "btn btn-info" })
+}

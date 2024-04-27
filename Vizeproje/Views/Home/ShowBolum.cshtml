@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Vizeproje.Models.BolumTb>
+
+@{
+    ViewBag.Title = "Bölüm Bilgileri";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Öğrenci ID</th>
+            <th scope="col">Ders Adı</th>
+            <th scope="col">Kredi</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var bolum in Model)
+        {
+            <tr>
+                <td>@bolum.Ogrencid</td>
+                <td>@bolum.Ders</td>
+                <td>@bolum.Kredi</td>
+            </tr>
+        }
+    </tbody>
+</table>

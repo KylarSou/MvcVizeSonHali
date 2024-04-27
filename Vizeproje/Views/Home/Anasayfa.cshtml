@@ -1,0 +1,122 @@
+﻿@using Vizeproje.Models
+@using System.Data.SqlClient;
+@{
+    var loggedInUser = Session["LoggedInUser"] as LoginTb;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Anasayfa</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        .header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .footer {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+
+    @if (loggedInUser != null)
+    {
+        using (var db = new UniversiteEntities())
+        {
+            // Giriş yapan kullanıcının id'sine göre BolumTb'den ilgili bilgileri alıp gösterme
+            var ogrenciBilgileri = db.Database.SqlQuery<BolumTb>(
+                "SELECT BolumTb.Ogrencid, BolumTb.Ders, BolumTb.Kredi " +
+                "FROM BolumTb " +
+                "INNER JOIN LoginTb ON BolumTb.Ogrencid = LoginTb.id " +
+                "WHERE LoginTb.id = @id", new SqlParameter("id", loggedInUser.id)).FirstOrDefault();
+
+            if (ogrenciBilgileri != null)
+            {
+                var ogrenciId = ogrenciBilgileri.Ogrencid;
+                var ders = ogrenciBilgileri.Ders;
+                var kredi = ogrenciBilgileri.Kredi;
+
+                // Toplam kredi hesaplama
+                var toplamKredi = db.Database.SqlQuery<int>(
+                    "SELECT SUM(CAST(Kredi AS INT)) FROM BolumTb WHERE Ogrencid = @ogrenciId",
+                    new SqlParameter("ogrenciId", ogrenciId)).FirstOrDefault();
+
+                string krediDurumu = "";
+                if (toplamKredi < 10)
+                {
+                    krediDurumu = "Toplam kredi 10'dan az kaldınız.";
+                }
+                else
+                {
+                    krediDurumu = "Toplam kredi 10'dan fazla geçtiniz.";
+                }
+
+                <div class="container" style="margin-top: 50px;">
+                    <h2>Anasayfa</h2>
+                    <table class="table">
+                        <tr>
+                            <th>Öğrenci Id</th>
+                            <th>Ders</th>
+                            <th>Kredi</th>
+                        </tr>
+                        <tr>
+                            <td>@ogrenciId</td>
+                            <td>@ders</td>
+                            <td>@kredi</td>
+                        </tr>
+                    </table>
+                    <p>Toplam Kredi: @toplamKredi</p> <!-- Toplam kredi bilgisini göster -->
+                    <p>@krediDurumu</p> <!-- Kredi durumu bilgisini göster -->
+                </div>
+            }
+            else
+            {
+                <div class="container" style="margin-top: 50px;">
+                    <h2>Anasayfa</h2>
+                    <p>Veri bulunamadı.</p>
+                </div>
+            }
+        }
+    }
+    else
+    {
+        <div class="container" style="margin-top: 50px;">
+            <h2>Anasayfa</h2>
+            <p>Giriş yapmadınız.</p>
+        </div>
+    }
+
+    <div class="footer">
+        <p>&copy; 2024 Anasayfa</p>
+    </div>
+
+</body>
+</html>
